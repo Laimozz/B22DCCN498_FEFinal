@@ -14,7 +14,7 @@ function UserDetail() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch(`http://localhost:8081/api/user/${userId}`, {
+        const response = await fetch(`https://dk8zrr-8081.csb.app/api/user/${userId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
