@@ -19,7 +19,7 @@ function LoginRegister({setTrigger}){
 
     const loginHandle = async () => {
         try {
-            const response = await fetch(`http://localhost:8081/api/admin/login`, {
+            const response = await fetch(`https://dk8zrr-8081.csb.app/api/admin/login`, {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",
@@ -51,7 +51,7 @@ function LoginRegister({setTrigger}){
 
     const onRegisterSubmit = async (data) => {
     try {
-      const response = await fetch(`http://localhost:8081/api/user/user`, {
+      const response = await fetch(`https://dk8zrr-8081.csb.app/api/user/user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
