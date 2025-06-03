@@ -10,7 +10,7 @@ function Logout({setTrigger}){
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch("http://localhost:8081/api/admin/logout", {
+                const res = await fetch("https://dk8zrr-8081.csb.app/api/admin/logout", {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`
