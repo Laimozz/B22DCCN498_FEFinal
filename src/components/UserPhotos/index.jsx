@@ -23,7 +23,7 @@ function UserPhotos() {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const photoResponse = await fetch(`http://localhost:8081/api/photo/photosOfUser/${userId}`, {
+        const photoResponse = await fetch(`https://dk8zrr-8081.csb.app/api/photo/photosOfUser/${userId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -49,7 +49,7 @@ function UserPhotos() {
 
     const fetchUser = async () => {
       try {
-        const userResponse = await fetch(`http://localhost:8081/api/user/${userId}`, {
+        const userResponse = await fetch(`https://dk8zrr-8081.csb.app/api/user/${userId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -91,7 +91,7 @@ function UserPhotos() {
 
     userIds.forEach(async (id) => {
       try {
-        const res = await fetch(`http://localhost:8081/api/user/${id}`, {
+        const res = await fetch(`https://dk8zrr-8081.csb.app/api/user/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -117,7 +117,7 @@ function UserPhotos() {
   //
   const commentHandle = async (id) => {
     try {
-      const res = await fetch(`http://localhost:8081/api/photo/commentsOfPhoto/${id}`, {
+      const res = await fetch(`https://dk8zrr-8081.csb.app/api/photo/commentsOfPhoto/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -152,7 +152,7 @@ function UserPhotos() {
       {photos.map((photo) => (
         <div key={photo._id} className="photo-card">
           <img
-            src={`http://localhost:8081/images/${photo.file_name}`}
+            src={`https://dk8zrr-8081.csb.app/images/${photo.file_name}`}
             alt=""
             className="photo-image"
           />
