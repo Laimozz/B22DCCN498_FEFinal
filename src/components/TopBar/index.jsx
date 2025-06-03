@@ -18,7 +18,7 @@ function TopBar() {
     formData.append('file', file);
 
     try {
-      const res = await fetch("http://localhost:8081/api/photo/photos/new", {
+      const res = await fetch("https://dk8zrr-8081.csb.app/api/photo/photos/new", {
         method: "POST" ,
         headers : {
           'Authorization': `Bearer ${token}`
@@ -49,7 +49,7 @@ function TopBar() {
   useEffect(() => {
       const fetchUser = async () => {
       try {
-        const response = await fetch(`http://localhost:8081/api/user/${user_id}`, {
+        const response = await fetch(`https://dk8zrr-8081.csb.app/api/user/${user_id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
