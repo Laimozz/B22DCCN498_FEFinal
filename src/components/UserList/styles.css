@@ -1,0 +1,39 @@
+.user-list-container {
+  padding: 16px;
+  background-color: #fafafa;
+  border-radius: 8px;
+}
+
+.user-list {
+  width: 100%;
+}
+
+.user-list-item-wrapper {
+  margin-bottom: 4px;
+}
+
+.user-list-item {
+  padding: 12px;
+  background-color: #fff;
+  transition: background-color 0.2s ease;
+  border-radius: 4px;
+}
+
+.user-list-item:hover {
+  background-color: #e3f2fd;
+  cursor: pointer;
+}
+
+.user-list-text {
+  font-weight: 500;
+  color: #333;
+}
+
+.user-list-divider {
+  margin: 4px 0;
+  background-color: #ddd;
+}
+.user-list-item-meta {
+  font-size: 14px;
+  color: #666;
+}

@@ -1,0 +1,77 @@
+.login-register-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+.login-form, .register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-input, .register-input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+
+.login-input:focus, .register-input:focus {
+    border-color: #1976d2;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
+}
+
+.login-button, .register-button, .tab-button {
+    padding: 12px 18px;
+    margin: 10px 5px 0 0;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover, .register-button:hover, .tab-button:hover {
+    background-color: #115293;
+}
+
+.error {
+    color: #d32f2f;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.message {
+    margin-top: 15px;
+    color: #388e3c;
+    font-weight: bold;
+}
+
+.switch-tab {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.switch-tab a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.switch-tab a:hover {
+    text-decoration: underline;
+}
