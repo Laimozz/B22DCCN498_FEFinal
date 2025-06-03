@@ -13,7 +13,7 @@ const UserList = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch('http://localhost:8081/api/user/list', {
+        const response = await fetch('https://dk8zrr-8081.csb.app/api/user/list', {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
