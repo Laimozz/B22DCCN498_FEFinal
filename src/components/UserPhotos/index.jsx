@@ -19,11 +19,45 @@ function UserPhotos() {
   const user_id = localStorage.getItem("user_id");
   const nav = useNavigate();
 
+ const [editing, setEditing] = useState(null);
+  const [editText, setEditText] = useState("");
+
+const handleUpdate = async (photoId, commentId) => {
+  const token = localStorage.getItem("token");
+  await fetch(`http://localhost:8081/api/photo/${photoId}/comment/${commentId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ newComment: editText })
+  });
+  setEditing(null);
+  setTrigger((pre) => !pre); // gọi lại ảnh để reload comment mới
+};
+
+const handleDelete = async (photoId, commentId) => {
+  const confirm = window.confirm("Bạn có chắc muốn xóa comment này?");
+  if (!confirm) return;
+  try {
+    const token = localStorage.getItem("token");
+    await fetch(`http://localhost:8081/api/photo/${photoId}/comment/${commentId}`, {
+      method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    });
+    setTrigger(pre => !pre); // reload lại comment
+  } catch (err) {
+    console.error("Error deleting comment:", err);
+  }
+};
+
   //Fetch photos of the user
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const photoResponse = await fetch(`https://dk8zrr-8081.csb.app/api/photo/photosOfUser/${userId}`, {
+        const photoResponse = await fetch(`http://localhost:8081/api/photo/photosOfUser/${userId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -49,7 +83,7 @@ function UserPhotos() {
 
     const fetchUser = async () => {
       try {
-        const userResponse = await fetch(`https://dk8zrr-8081.csb.app/api/user/${userId}`, {
+        const userResponse = await fetch(`http://localhost:8081/api/user/${userId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -91,7 +125,7 @@ function UserPhotos() {
 
     userIds.forEach(async (id) => {
       try {
-        const res = await fetch(`https://dk8zrr-8081.csb.app/api/user/${id}`, {
+        const res = await fetch(`http://localhost:8081/api/user/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -117,7 +151,7 @@ function UserPhotos() {
   //
   const commentHandle = async (id) => {
     try {
-      const res = await fetch(`https://dk8zrr-8081.csb.app/api/photo/commentsOfPhoto/${id}`, {
+      const res = await fetch(`http://localhost:8081/api/photo/commentsOfPhoto/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -152,7 +186,7 @@ function UserPhotos() {
       {photos.map((photo) => (
         <div key={photo._id} className="photo-card">
           <img
-            src={`https://dk8zrr-8081.csb.app/images/${photo.file_name}`}
+            src={`http://localhost:8081/images/${photo.file_name}`}
             alt=""
             className="photo-image"
           />
@@ -174,7 +208,31 @@ function UserPhotos() {
                     at {formatDate(comment.date_time)}:
                   </p>
                   <p className="photo-comment-text">{comment.comment}</p>
+                 
+                 {/*edit comment*/}
+                  {user_id === comment.user_id && (
+                  <button onClick={() => setEditing(comment._id)}>Edit</button>
+                  )}
+                  {editing === comment._id ? (
+                  <div>
+                  <input
+                  value={editText}
+                  onChange={(e) => setEditText(e.target.value)}
+                  />
+                  <button onClick={() => handleUpdate(photo._id,comment._id)}>Save</button>
+                  </div>
+                  ) : (
+                  <p>{comment.comment}</p> 
+                  )}
 
+
+
+
+              {user_id === comment.user_id && (
+               <>
+               <button onClick={() => handleDelete(photo._id, comment._id)}>Delete</button>
+              </>
+             )}
                 </div>
               );
             })}
