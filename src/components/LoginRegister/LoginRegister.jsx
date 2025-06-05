@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography, Box } from "@mui/material";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {useForm} from "react-hook-form";
 import './styles.css';
-
+// long long long
 function LoginRegister({setTrigger}){
     const [tab, setTab] = useState("login");
     const [password, setPassword] = useState("");
